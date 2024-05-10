@@ -20,4 +20,6 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 
+app.MapGet("/", () => { });
+
 await app.RunAsync();
