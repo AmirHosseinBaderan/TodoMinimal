@@ -15,20 +15,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A8B105E7-C8DE-4E14-B80A-0627728FC358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Server.Api", "Src\Server\Todo.Server.Api\Todo.Server.Api.csproj", "{C9A67E73-58E2-4268-88B1-A64D47E3AF4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Server.Api", "Src\Server\Todo.Server.Api\Todo.Server.Api.csproj", "{C9A67E73-58E2-4268-88B1-A64D47E3AF4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Infrastructure", "Src\Infrastructure\Todo.Infrastructure\Todo.Infrastructure.csproj", "{64BC47BD-9406-49F2-9177-F0A04D3A983B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Infrastructure", "Src\Infrastructure\Todo.Infrastructure\Todo.Infrastructure.csproj", "{64BC47BD-9406-49F2-9177-F0A04D3A983B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Domain", "Src\Domain\Todo.Domain\Todo.Domain.csproj", "{8D62BF7E-435C-45FA-BB40-C42A71ABB19A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Domain", "Src\Domain\Todo.Domain\Todo.Domain.csproj", "{8D62BF7E-435C-45FA-BB40-C42A71ABB19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application", "Src\Application\Todo.Application\Todo.Application.csproj", "{D666C0ED-9943-4EEC-9574-0FB778AE801A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Application", "Src\Application\Todo.Application\Todo.Application.csproj", "{D666C0ED-9943-4EEC-9574-0FB778AE801A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{15FAD730-B3D0-4BAD-9480-8FB750F82396}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F2482936-CCA1-47D2-B0B0-C8FF971DFB5A}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
-		Directory.Packages.props = Directory.Packages.props
-		global.json = global.json
+		Directory.Pakcages.props = Directory.Pakcages.props
 	EndProjectSection
 EndProject
 Global
