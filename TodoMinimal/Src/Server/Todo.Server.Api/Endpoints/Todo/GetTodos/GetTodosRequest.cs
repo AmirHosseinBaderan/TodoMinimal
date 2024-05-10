@@ -1,3 +1,5 @@
-﻿namespace Todo.Server.Api.Endpoints.Todo;
+﻿using Microsoft.AspNetCore.Mvc;
 
-public record GetTodosRequest(int Page, int Count);
+namespace Todo.Server.Api.Endpoints.Todo;
+
+public record GetTodosRequest([FromQuery] int Page, [FromQuery] int Count);
