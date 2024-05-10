@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Todo.Domain.Common;
+using Todo.Infrastructure.Presistance;
 
-namespace Todo.Infrastructure.Presistance;
+namespace Infrastructure.Presistance;
 
 public static class DependencyInjections
 {

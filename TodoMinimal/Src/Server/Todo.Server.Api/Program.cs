@@ -1,6 +1,6 @@
-using Todo.Application;
-using Todo.Infrastructure.Presistance;
-using Todo.Server.Api;
+using Application;
+using Infrastructure.Presistance;
+using Server.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 

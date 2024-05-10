@@ -2,11 +2,10 @@
 using Mapster;
 using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Server.Api.Abstractions;
 using System.Reflection;
-using Todo.Infrastructure;
-using Todo.Server.Api.Abstractions;
 
-namespace Todo.Server.Api;
+namespace Server.Api;
 
 public static class DependencyInjections
 {

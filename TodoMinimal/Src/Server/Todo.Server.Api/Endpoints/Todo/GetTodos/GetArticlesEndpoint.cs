@@ -1,6 +1,6 @@
 ﻿using MapsterMapper;
 using MediatR;
-using Todo.Server.Api.Abstractions;
+using Server.Api.Abstractions;
 
 namespace Todo.Server.Api.Endpoints.Todo;
 

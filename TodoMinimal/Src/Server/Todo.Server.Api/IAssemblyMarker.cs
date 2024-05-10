@@ -1,4 +1,4 @@
-﻿namespace Todo.Server.Api;
+﻿namespace Server.Api;
 public interface IAssemblyMarker
 {
 }

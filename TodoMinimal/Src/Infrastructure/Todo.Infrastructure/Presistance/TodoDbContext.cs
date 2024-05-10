@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Todo.Infrastructure.Presistance;
+namespace Infrastructure.Presistance;
 
 public class TodoDbContext : DbContext
 {

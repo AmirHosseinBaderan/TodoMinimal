@@ -1,7 +1,7 @@
 ﻿using MapsterMapper;
 using MediatR;
 
-namespace Todo.Server.Api.Abstractions;
+namespace Server.Api.Abstractions;
 
 public interface IEndpoint
 {
