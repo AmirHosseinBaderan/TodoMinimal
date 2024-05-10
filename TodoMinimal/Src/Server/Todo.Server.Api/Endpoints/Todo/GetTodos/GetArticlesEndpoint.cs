@@ -17,7 +17,9 @@ public class GetArticlesEndpoint : IEndpoint<GetTodosRequest, GetTodoResponse>
                   [AsParameters] GetTodosRequest request,
                   IMapper mapper,
                   IMediator mediator) =>
-        await HandlerAsync(request, mapper, mediator));
+        await HandlerAsync(request, mapper, mediator))
+            .WithName(nameof(GetTodosRequest))
+            .WithTags(EndpointSchema.TodoTag);
     }
 
 }
