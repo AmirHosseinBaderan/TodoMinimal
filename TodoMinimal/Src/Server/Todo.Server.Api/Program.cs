@@ -1,4 +1,6 @@
+using Todo.Application;
 using Todo.Infrastructure.Presistance;
+using Todo.Server.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,13 +10,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureInfrastructureLayer(builder.Configuration);
+builder.Services.ConfigureApplicationLayer(builder.Configuration);
+builder.Services.ConfigureMapster();
+builder.Services.ConfigureValidator();
+builder.Services.ConfigureCors();
+
+builder.Services.AddEndpoints();
+builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+app.UseCors("AllowOrigin");
+
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.MapEndpoints();
 
 
 app.UseHttpsRedirection();
