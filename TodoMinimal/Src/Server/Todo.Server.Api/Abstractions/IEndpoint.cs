@@ -1,6 +1,11 @@
-﻿namespace Todo.Server.Api.Abstractions;
+﻿using MapsterMapper;
+using MediatR;
 
-public interface IEndpoint
+namespace Todo.Server.Api.Abstractions;
+
+public interface IEndpoint<TReuest, TResponse>
 {
     void MapEndpoint(IEndpointRouteBuilder app);
+
+    Task<TResponse> HandlerAsync([AsParameters] TReuest request, IMapper mapper, IMediator mediator);
 }
