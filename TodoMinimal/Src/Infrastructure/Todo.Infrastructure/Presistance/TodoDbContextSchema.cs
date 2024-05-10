@@ -1,4 +1,4 @@
-﻿namespace Todo.Infrastructure;
+﻿namespace Todo.Infrastructure.Presistance;
 
 public static class TodoDbContextSchema
 {

@@ -2,9 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Todo.Domain.Common;
-using Todo.Infrastructure.Presistance;
 
-namespace Todo.Infrastructure;
+namespace Todo.Infrastructure.Presistance;
 
 public static class DependencyInjections
 {
