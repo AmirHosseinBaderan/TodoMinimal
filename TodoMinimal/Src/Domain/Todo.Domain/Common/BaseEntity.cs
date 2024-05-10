@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Todo.Domain.Common;
+﻿namespace Domain.Common;
 
 public record BaseEntity
 {

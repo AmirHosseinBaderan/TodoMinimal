@@ -1,6 +1,6 @@
-﻿using Todo.Domain.Common;
+﻿using Domain.Common;
 
-namespace Todo.Domain.Aggregates;
+namespace Domain.Aggregates;
 
 public record Todo : BaseEntity
 {

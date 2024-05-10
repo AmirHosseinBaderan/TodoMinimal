@@ -1,4 +1,4 @@
-﻿namespace Todo.Domain.Common;
+﻿namespace Domain.Common;
 
 public interface IBaseQuery<TEntity> where TEntity : BaseEntity
 {

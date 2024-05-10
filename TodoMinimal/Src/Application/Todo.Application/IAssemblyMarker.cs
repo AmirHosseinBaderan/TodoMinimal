@@ -1,4 +1,4 @@
-﻿namespace Todo.Application;
+﻿namespace Application;
 
 public interface IAssemblyMarker
 {

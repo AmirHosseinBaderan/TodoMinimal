@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Todo.Application;
+namespace Application;
 
 public static class DependencyInjection
 {
