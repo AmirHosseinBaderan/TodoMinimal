@@ -1,14 +1,18 @@
-﻿using MapsterMapper;
+﻿using Application.Todo;
+using Application.Todo.GetTodos;
+using MapsterMapper;
 using MediatR;
 using Server.Api.Abstractions;
 
 namespace Todo.Server.Api.Endpoints.Todo;
 
-public class GetArticlesEndpoint : IEndpoint, IEndpointHandler<GetTodosRequest, GetTodoResponse>
+public class GetArticlesEndpoint : IEndpoint, IEndpointHandler<GetTodosRequest, IEnumerable<GetTodoResponse>>
 {
-    public Task<GetTodoResponse> HandlerAsync(GetTodosRequest request, IMapper mapper, IMediator mediator)
+    public async Task<IEnumerable<GetTodoResponse>> HandlerAsync(GetTodosRequest request, IMapper mapper, IMediator mediator)
     {
-        throw new NotImplementedException();
+        GetTodosQuery command = mapper.Map<GetTodosQuery>(request);
+        IEnumerable<TodoDto> result = await mediator.Send(command);
+        return mapper.Map<IEnumerable<GetTodoResponse>>(result);
     }
 
     public void MapEndpoint(IEndpointRouteBuilder app)
