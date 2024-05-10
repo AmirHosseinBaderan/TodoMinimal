@@ -3,9 +3,12 @@ using MediatR;
 
 namespace Todo.Server.Api.Abstractions;
 
-public interface IEndpoint<TReuest, TResponse>
+public interface IEndpoint
 {
     void MapEndpoint(IEndpointRouteBuilder app);
+}
 
-    Task<TResponse> HandlerAsync([AsParameters] TReuest request, IMapper mapper, IMediator mediator);
+public interface IEndpointHandler<TRequest, TResponse>
+{
+    Task<TResponse> HandlerAsync(TRequest request, IMapper mapper, IMediator mediator);
 }
