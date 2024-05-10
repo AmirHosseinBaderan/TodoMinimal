@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Todo.Infrastructure
+namespace Todo.Infrastructure;
+
+public class TodoDbContext(DbContextOptions<TodoDbContext> options) : DbContext(options)
 {
-    internal class TodoDbContext
-    {
-    }
+
+    public DbSet<Domain.Aggregates.Todo> Todo { get; set; } = null!;
 }
