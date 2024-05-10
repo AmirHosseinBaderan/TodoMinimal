@@ -4,9 +4,9 @@ using Todo.Server.Api.Abstractions;
 
 namespace Todo.Server.Api.Endpoints.Todo;
 
-public class GetArticlesEndpoint : IEndpoint<GetTodosRequest, GetTodoResponse>
+public class GetArticlesEndpoint : IEndpoint, IEndpointHandler<GetTodosRequest, GetTodoResponse>
 {
-    public Task<GetTodoResponse> HandlerAsync([AsParameters] GetTodosRequest request, IMapper mapper, IMediator mediator)
+    public Task<GetTodoResponse> HandlerAsync(GetTodosRequest request, IMapper mapper, IMediator mediator)
     {
         throw new NotImplementedException();
     }
