@@ -2,7 +2,12 @@
 
 namespace Todo.Infrastructure.Presistance;
 
-public class TodoDbContext(DbContextOptions<TodoDbContext> options) : DbContext(options)
+public class TodoDbContext : DbContext
 {
-    public DbSet<Domain.Aggregates.Todo> Todo { get; set; } = null!;
+    public TodoDbContext(DbContextOptions<TodoDbContext> options) : base(options)
+    {
+
+    }
+
+    public DbSet<Domain.Aggregates.Todo> Todo => Set<Domain.Aggregates.Todo>();
 }
