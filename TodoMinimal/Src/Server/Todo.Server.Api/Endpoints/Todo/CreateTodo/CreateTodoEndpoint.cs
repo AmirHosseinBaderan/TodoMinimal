@@ -1,8 +1,4 @@
-﻿using Application.Todo;
-using Application.Todo.CreateTodo;
-using MapsterMapper;
-using MediatR;
-using Server.Api.Abstractions;
+﻿using Application.Todo.CreateTodo;
 using Server.Api.Filters;
 using Todo.Server.Api.Endpoints;
 
@@ -13,8 +9,13 @@ public class CreateTodoEndpoint : IEndpoint, IEndpointHandler<CreateTodoRequest,
     public async Task<CreateTodoResponse> HandlerAsync(CreateTodoRequest request, IMapper mapper, IMediator mediator)
     {
         CreateTodoCommand commnad = mapper.Map<CreateTodoCommand>(request);
-        TodoDto? result = await mediator.Send(commnad);
-        return new(result is not null, result);
+        var result = await mediator.Send(commnad);
+
+        return result
+                .Match(Left: (status) =>
+                      new CreateTodoResponse(false, null),
+                      Right: (todo) =>
+                      new CreateTodoResponse(true, todo));
     }
 
     public void MapEndpoint(IEndpointRouteBuilder app)
