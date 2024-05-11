@@ -1,8 +1,8 @@
 ﻿namespace Application.Todo.UpdateTodo;
 
-public class UpdateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud, IBaseQuery<Domain.Aggregates.Todo> query) : IRequestHandler<UpdateTodoCommand, Either<TodoDto, TodoActionStatus>>
+public class UpdateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud, IBaseQuery<Domain.Aggregates.Todo> query) : IRequestHandler<UpdateTodoCommand, Either<TodoActionStatus, TodoDto>>
 {
-    public async Task<Either<TodoDto, TodoActionStatus>> Handle(UpdateTodoCommand request, CancellationToken cancellationToken)
+    public async Task<Either<TodoActionStatus, TodoDto>> Handle(UpdateTodoCommand request, CancellationToken cancellationToken)
     {
         var todo = await query.GetAsync(request.Id);
         if (todo is null)
