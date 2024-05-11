@@ -6,7 +6,7 @@ using Server.Api.Abstractions;
 
 namespace Todo.Server.Api.Endpoints.Todo;
 
-public class GetArticlesEndpoint : IEndpoint, IEndpointHandler<GetTodosRequest, IEnumerable<GetTodoResponse>>
+public class GetTodosEndpoint : IEndpoint, IEndpointHandler<GetTodosRequest, IEnumerable<GetTodoResponse>>
 {
     public async Task<IEnumerable<GetTodoResponse>> HandlerAsync(GetTodosRequest request, IMapper mapper, IMediator mediator)
     {
