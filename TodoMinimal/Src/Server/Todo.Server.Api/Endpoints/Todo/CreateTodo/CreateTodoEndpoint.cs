@@ -1,4 +1,5 @@
 ﻿using Application.Todo.CreateTodo;
+using Microsoft.AspNetCore.Mvc;
 using Server.Api.Filters;
 using Todo.Server.Api.Endpoints;
 
@@ -18,13 +19,13 @@ public class CreateTodoEndpoint : IEndpoint, IEndpointHandler<CreateTodoRequest,
 
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("/todo/create", async ([AsParameters] CreateTodoRequest request,
+        app.MapPost("/todo/create", async ([FromBody] CreateTodoRequest request,
                                     IMapper mapper,
                                     IMediator mediator) =>
         await HandlerAsync(request,
                            mapper,
                            mediator))
-            .Validator<CreateTodoValidator>()
+            .Validator<CreateTodoRequest>()
             .WithTags(EndpointSchema.TodoTag);
     }
 }

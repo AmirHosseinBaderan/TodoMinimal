@@ -1,6 +1,7 @@
 ﻿
 
 using Application.Todo.UpdateTodo;
+using Microsoft.AspNetCore.Mvc;
 using Server.Api.Filters;
 using Todo.Server.Api.Endpoints;
 
@@ -20,13 +21,13 @@ public class UpdateTodoEndpoint : IEndpoint, IEndpointHandler<UpdateTodoRequest,
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost("/todo/update", async (
-                    [AsParameters] UpdateTodoRequest request,
+                    [FromBody] UpdateTodoRequest request,
                     IMapper mapper,
                     IMediator mediator) =>
         await HandlerAsync(request,
         mapper,
         mediator))
-            .Validator<UpdateTodoValidator>()
+            .Validator<UpdateTodoRequest>()
             .WithTags(EndpointSchema.TodoTag);
     }
 }
