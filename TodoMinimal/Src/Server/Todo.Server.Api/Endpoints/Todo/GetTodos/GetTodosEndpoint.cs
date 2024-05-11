@@ -1,10 +1,7 @@
 ﻿using Application.Todo;
 using Application.Todo.GetTodos;
-using MapsterMapper;
-using MediatR;
-using Server.Api.Abstractions;
 
-namespace Todo.Server.Api.Endpoints.Todo;
+namespace Server.Api.Endpoints.Todo;
 
 public class GetTodosEndpoint : IEndpoint, IEndpointHandler<GetTodosRequest, IEnumerable<GetTodoResponse>>
 {

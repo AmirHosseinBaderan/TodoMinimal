@@ -1,4 +1,4 @@
-﻿namespace Todo.Server.Api.Endpoints;
+﻿namespace Server.Api.Endpoints;
 
 public class EndpointSchema
 {

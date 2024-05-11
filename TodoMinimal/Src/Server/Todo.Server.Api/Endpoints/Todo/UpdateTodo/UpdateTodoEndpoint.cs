@@ -3,7 +3,6 @@
 using Application.Todo.UpdateTodo;
 using Microsoft.AspNetCore.Mvc;
 using Server.Api.Filters;
-using Todo.Server.Api.Endpoints;
 
 namespace Server.Api.Endpoints.Todo.UpdateTodo;
 
