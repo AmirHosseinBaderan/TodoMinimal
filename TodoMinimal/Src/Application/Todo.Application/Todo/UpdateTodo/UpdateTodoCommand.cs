@@ -1,5 +1,3 @@
-﻿using MediatR;
+﻿namespace Application.Todo.UpdateTodo;
 
-namespace Application.Todo.UpdateTodo;
-
-public record UpdateTodoCommand(Guid Id, string Title, string? Description, bool Complete) : IRequest<TodoDto>;
+public record UpdateTodoCommand(Guid Id, string Title, string? Description, bool Complete) : IRequest<Either<TodoDto, TodoActionStatus>>;

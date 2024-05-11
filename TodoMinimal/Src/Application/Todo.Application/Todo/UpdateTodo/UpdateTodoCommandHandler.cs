@@ -1,16 +1,26 @@
-﻿using Domain.Common;
-using MediatR;
+﻿namespace Application.Todo.UpdateTodo;
 
-namespace Application.Todo.UpdateTodo;
-
-public class UpdateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud, IBaseQuery<Domain.Aggregates.Todo> query) : IRequestHandler<UpdateTodoCommand, TodoDto?>
+public class UpdateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud, IBaseQuery<Domain.Aggregates.Todo> query) : IRequestHandler<UpdateTodoCommand, Either<TodoDto, TodoActionStatus>>
 {
-    public async Task<TodoDto?> Handle(UpdateTodoCommand request, CancellationToken cancellationToken)
+    public async Task<Either<TodoDto, TodoActionStatus>> Handle(UpdateTodoCommand request, CancellationToken cancellationToken)
     {
         var todo = await query.GetAsync(request.Id);
-        var res = await cud.UpdateAsync(todo!);
+        if (todo is null)
+            return TodoActionStatus.NotFound;
 
-        return null;
+        todo = CreateInstance(request, todo);
+        return await cud.UpdateAsync(todo) ?
+                 (TodoDto)todo
+                 : TodoActionStatus.Faild;
     }
+
+    static Domain.Aggregates.Todo CreateInstance(UpdateTodoCommand request, Domain.Aggregates.Todo todo)
+        => todo with
+        {
+            Complete = request.Complete,
+            Title = request.Title,
+            Description = request.Description,
+            UpdatedOn = DateTime.Now,
+        };
 
 }
