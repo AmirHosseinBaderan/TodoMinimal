@@ -8,19 +8,18 @@ public class UpdateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud, IBas
         if (todo is null)
             return TodoActionStatus.NotFound;
 
-        todo = CreateInstance(request, todo);
+        UpdateInstance(request, todo);
         return await cud.UpdateAsync(todo) ?
                  (TodoDto)todo
                  : TodoActionStatus.Faild;
     }
 
-    static Domain.Aggregates.Todo CreateInstance(UpdateTodoCommand request, Domain.Aggregates.Todo todo)
-        => todo with
-        {
-            Complete = request.Complete,
-            Title = request.Title,
-            Description = request.Description,
-            UpdatedOn = DateTime.Now,
-        };
+    static void UpdateInstance(UpdateTodoCommand request, Domain.Aggregates.Todo todo)
+    {
+        todo.Complete = request.Complete;
+        todo.UpdatedOn = DateTime.Now;
+        todo.Title = request.Title;
+        todo.Description = request.Description;
+    }
 
 }
