@@ -1,14 +1,14 @@
-﻿using Domain.Common;
-using MediatR;
+﻿
 
 namespace Application.Todo.CreateTodo;
 
-public class CreateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud) : IRequestHandler<CreateTodoCommand, TodoDto?>
+public class CreateTodoCommandHandler(IBaseCud<Domain.Aggregates.Todo> cud) : IRequestHandler<CreateTodoCommand, Either<TodoActionStatus, TodoDto>>
 {
-    public async Task<TodoDto?> Handle(CreateTodoCommand request, CancellationToken cancellationToken)
+    public async Task<Either<TodoActionStatus, TodoDto>> Handle(CreateTodoCommand request, CancellationToken cancellationToken)
     {
         var todo = CreateInstance(request);
-        return await cud.InsertAsync(todo) ? (TodoDto)todo : null;
+        return await cud.InsertAsync(todo) ? (TodoDto)todo :
+               TodoActionStatus.Faild;
     }
 
     static Domain.Aggregates.Todo CreateInstance(CreateTodoCommand request)
