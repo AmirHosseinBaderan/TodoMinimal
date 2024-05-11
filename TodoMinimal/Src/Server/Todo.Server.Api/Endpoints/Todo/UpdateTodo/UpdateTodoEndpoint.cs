@@ -7,9 +7,10 @@ namespace Server.Api.Endpoints.Todo.UpdateTodo;
 
 public class UpdateTodoEndpoint : IEndpoint, IEndpointHandler<UpdateTodoRequest, UpdateTodoResponse>
 {
-    public Task<UpdateTodoResponse> HandlerAsync(UpdateTodoRequest request, IMapper mapper, IMediator mediator)
+    public async Task<UpdateTodoResponse> HandlerAsync(UpdateTodoRequest request, IMapper mapper, IMediator mediator)
     {
-
+        var command = await mediator.Send(request);
+        return new(true, null);
     }
 
     public void MapEndpoint(IEndpointRouteBuilder app)
