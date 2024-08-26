@@ -1,11 +1,17 @@
 ﻿using Application.Todo;
 using Application.Todo.DeleteTodo;
+using Todo.Server.Api.Models;
 
 namespace Server.Api.Endpoints.Todo.DeleteTodo;
 
 public class DeleteTodoEndpoint : IEndpoint, IEndpointHandler<DeleteTodoRequest, IResponse>
 {
-    public async Task<IResponse> HandlerAsync(DeleteTodoRequest request, IMapper mapper, IMediator mediator)
+    public Task<User?> GetUserAsync(HttpContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IResponse> HandlerAsync(HttpContext context, DeleteTodoRequest request, IMapper mapper, IMediator mediator)
     {
         DeleteTodoCommand command = mapper.Map<DeleteTodoCommand>(request);
         TodoActionStatus result = await mediator.Send(command);
@@ -14,12 +20,7 @@ public class DeleteTodoEndpoint : IEndpoint, IEndpointHandler<DeleteTodoRequest,
 
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("/todo/delete", async ([AsParameters] DeleteTodoRequest request,
-                                        IMapper mapper,
-                                        IMediator mediator) =>
-        await HandlerAsync(request,
-        mapper,
-        mediator))
-            .WithTags(EndpointSchema.TodoTag);
+        app.MapGet("/todo/delete", HandlerAsync)
+       .WithTags(EndpointSchema.TodoTag);
     }
 }

@@ -1,12 +1,17 @@
 ﻿using Application.Todo.CreateTodo;
-using Microsoft.AspNetCore.Mvc;
 using Server.Api.Filters;
+using Todo.Server.Api.Models;
 
 namespace Server.Api.Endpoints.Todo.CreateTodo;
 
 public class CreateTodoEndpoint : IEndpoint, IEndpointHandler<CreateTodoRequest, IResponse>
 {
-    public async Task<IResponse> HandlerAsync(CreateTodoRequest request, IMapper mapper, IMediator mediator)
+    public Task<User?> GetUserAsync(HttpContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IResponse> HandlerAsync(HttpContext context, CreateTodoRequest request, IMapper mapper, IMediator mediator)
     {
         CreateTodoCommand commnad = mapper.Map<CreateTodoCommand>(request);
         var result = await mediator.Send(commnad);
@@ -18,12 +23,7 @@ public class CreateTodoEndpoint : IEndpoint, IEndpointHandler<CreateTodoRequest,
 
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("/todo/create", async ([FromBody] CreateTodoRequest request,
-                                    IMapper mapper,
-                                    IMediator mediator) =>
-        await HandlerAsync(request,
-                           mapper,
-                           mediator))
+        app.MapPost("/todo/create", HandlerAsync)
             .Validator<CreateTodoRequest>()
             .WithTags(EndpointSchema.TodoTag);
     }

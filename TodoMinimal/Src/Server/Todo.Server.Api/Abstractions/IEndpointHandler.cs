@@ -2,5 +2,5 @@
 
 public interface IEndpointHandler<TRequest, TResponse>
 {
-    Task<TResponse> HandlerAsync(TRequest request, IMapper mapper, IMediator mediator);
+    Task<TResponse> HandlerAsync(HttpContext context, TRequest request, IMapper mapper, IMediator mediator);
 }

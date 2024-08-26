@@ -2,9 +2,9 @@
 
 public static class GlobalResponse
 {
-    public static IResponse Success(this object result)
+    public static IResponse Success(this object? result)
     {
         Response response = new();
-        return response.Success(result);
+        return response.Success(result ?? new { });
     }
 }

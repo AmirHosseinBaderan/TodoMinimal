@@ -1,14 +1,17 @@
-﻿
-
-using Application.Todo.UpdateTodo;
-using Microsoft.AspNetCore.Mvc;
+﻿using Application.Todo.UpdateTodo;
 using Server.Api.Filters;
+using Todo.Server.Api.Models;
 
 namespace Server.Api.Endpoints.Todo.UpdateTodo;
 
 public class UpdateTodoEndpoint : IEndpoint, IEndpointHandler<UpdateTodoRequest, IResponse>
 {
-    public async Task<IResponse> HandlerAsync(UpdateTodoRequest request, IMapper mapper, IMediator mediator)
+    public Task<User?> GetUserAsync(HttpContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IResponse> HandlerAsync(HttpContext context, UpdateTodoRequest request, IMapper mapper, IMediator mediator)
     {
         var command = mapper.Map<UpdateTodoCommand>(request);
         var result = await mediator.Send(command);
@@ -19,13 +22,7 @@ public class UpdateTodoEndpoint : IEndpoint, IEndpointHandler<UpdateTodoRequest,
 
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("/todo/update", async (
-                    [FromBody] UpdateTodoRequest request,
-                    IMapper mapper,
-                    IMediator mediator) =>
-        await HandlerAsync(request,
-        mapper,
-        mediator))
+        app.MapPost("/todo/update", HandlerAsync)
             .Validator<UpdateTodoRequest>()
             .WithTags(EndpointSchema.TodoTag);
     }
